@@ -1,0 +1,182 @@
+/* Global theme tokens used across all pages. */
+:root {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --ink: #12263a;
+  --accent: #004e89;
+  --line: #d9e0ea;
+  --error: #a01212;
+}
+
+/* Consistent box model for predictable sizing. */
+* {
+  box-sizing: border-box;
+}
+
+/* Page-level typography and background treatment. */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(180deg, #edf2f7 0%, #f7fafc 100%);
+  color: var(--ink);
+}
+
+/* Shared centered layout container. */
+.container {
+  width: min(980px, 92vw);
+  margin: 0 auto;
+}
+
+/* Sticky top navigation styles. */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+  position: sticky;
+  top: 0;
+}
+
+/* Navigation item alignment and spacing. */
+.nav-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 64px;
+  gap: 1rem;
+}
+
+/* Brand wordmark style. */
+.brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+/* Top navigation links and auth actions. */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Default anchor coloring for consistency. */
+a {
+  color: var(--accent);
+}
+
+/* Main content vertical rhythm. */
+main.container {
+  padding: 1.2rem 0 2rem;
+}
+
+/* Card-like panel used for each content section. */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Narrow variant for auth forms. */
+.panel.slim {
+  width: min(560px, 100%);
+}
+
+/* Utility text styles. */
+.muted {
+  color: #4a5f75;
+}
+
+/* Common form layouts. */
+.search-form,
+.stack-form {
+  display: grid;
+  gap: 0.65rem;
+}
+
+/* Helper text under inputs. */
+small {
+  color: #51657b;
+}
+
+/* Inherit typography for all form controls. */
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+/* Input and textarea chrome. */
+input,
+textarea {
+  padding: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+/* Allow longer freeform content fields. */
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Primary button style. */
+button {
+  width: fit-content;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+}
+
+/* CV list layout. */
+.cv-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* Individual CV item card. */
+.cv-item {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.8rem;
+}
+
+/* Validation and error message panel. */
+.error-box {
+  border: 1px solid #f5b3b3;
+  background: #fff0f0;
+  color: var(--error);
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+/* Keep logout form inline with nav links. */
+.inline-form {
+  display: inline;
+}
+
+/* Button visually matching a text link. */
+.link-btn {
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Mobile navigation stacking behavior. */
+@media (max-width: 700px) {
+  .nav-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.6rem 0;
+  }
+}

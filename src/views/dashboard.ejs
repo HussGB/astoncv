@@ -1,0 +1,21 @@
+<%- include("partials/header", { title: "Dashboard" }) %>
+
+<%# Quick actions for the signed-in user. %>
+<section class="panel">
+  <h1>My CV Dashboard</h1>
+  <p>Welcome, <strong><%= currentUser.name %></strong>.</p>
+  <p><a href="/dashboard/cv/edit">Edit my CV</a></p>
+</section>
+
+<%# Read-only snapshot of current CV fields. %>
+<section class="panel">
+  <h2>Current CV Data</h2>
+  <p><strong>Name:</strong> <%= cv.name %></p>
+  <p><strong>Email:</strong> <%= cv.email %></p>
+  <p><strong>Key programming language:</strong> <%= cv.keyprogramming || "Not set" %></p>
+  <p><strong>Profile:</strong> <%= cv.profile || "Not set" %></p>
+  <p><strong>Education:</strong> <%= cv.education || "Not set" %></p>
+  <p><strong>URL links:</strong> <%= cv.URLlinks || "Not set" %></p>
+</section>
+
+<%- include("partials/footer") %>

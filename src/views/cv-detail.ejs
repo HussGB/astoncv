@@ -1,0 +1,14 @@
+<%- include("partials/header", { title: "CV Details" }) %>
+
+<%# Full details for a single selected CV. %>
+<section class="panel">
+  <h1><%= cv.name %></h1>
+  <p><strong>Email:</strong> <%= cv.email %></p>
+  <p><strong>Key programming language:</strong> <%= cv.keyprogramming || "Not set" %></p>
+  <p><strong>Profile:</strong> <%= cv.profile || "Not set" %></p>
+  <p><strong>Education:</strong> <%= cv.education || "Not set" %></p>
+  <p><strong>URL links:</strong> <%= cv.URLlinks || "Not set" %></p>
+  <p><a href="/">Back to list</a></p>
+</section>
+
+<%- include("partials/footer") %>

@@ -1,0 +1,29 @@
+<%- include("partials/header", { title: "Login" }) %>
+
+<%# Login form with inline validation feedback. %>
+<section class="panel slim">
+  <h1>Login</h1>
+
+  <% if (errors.length) { %>
+    <%# Validation/authentication error messages. %>
+    <div class="error-box">
+      <% errors.forEach(error => { %>
+        <p><%= error.msg %></p>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <form action="/login" method="post" class="stack-form">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required maxlength="100" value="<%= formData.email || "" %>" />
+
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" required />
+
+    <button type="submit">Login</button>
+  </form>
+</section>
+
+<%- include("partials/footer") %>

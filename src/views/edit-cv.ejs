@@ -1,0 +1,38 @@
+<%- include("partials/header", { title: "Edit CV" }) %>
+
+<%# Form for updating the authenticated user's CV fields. %>
+<section class="panel">
+  <h1>Edit My CV</h1>
+
+  <% if (errors.length) { %>
+    <%# Server-side validation messages. %>
+    <div class="error-box">
+      <% errors.forEach(error => { %>
+        <p><%= error.msg %></p>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <form action="/dashboard/cv/edit" method="post" class="stack-form">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+    <label for="name">Name</label>
+    <input id="name" name="name" required maxlength="100" value="<%= cv.name || "" %>" />
+
+    <label for="keyprogramming">Key programming language</label>
+    <input id="keyprogramming" name="keyprogramming" maxlength="255" value="<%= cv.keyprogramming || "" %>" />
+
+    <label for="profile">Profile</label>
+    <textarea id="profile" name="profile" maxlength="500"><%= cv.profile || "" %></textarea>
+
+    <label for="education">Education</label>
+    <textarea id="education" name="education" maxlength="500"><%= cv.education || "" %></textarea>
+
+    <label for="URLlinks">URL links</label>
+    <textarea id="URLlinks" name="URLlinks" maxlength="500"><%= cv.URLlinks || "" %></textarea>
+
+    <button type="submit">Save CV</button>
+  </form>
+</section>
+
+<%- include("partials/footer") %>

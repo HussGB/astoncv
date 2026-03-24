@@ -1,0 +1,36 @@
+<%- include("partials/header", { title: "Register" }) %>
+
+<%# Registration form for creating a new CV account. %>
+<section class="panel slim">
+  <h1>Create Account</h1>
+
+  <% if (errors.length) { %>
+    <%# Validation messages from server-side rules. %>
+    <div class="error-box">
+      <% errors.forEach(error => { %>
+        <p><%= error.msg %></p>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <form action="/register" method="post" class="stack-form">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+    <label for="name">Full name</label>
+    <input id="name" name="name" required maxlength="100" value="<%= formData.name || "" %>" />
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required maxlength="100" value="<%= formData.email || "" %>" />
+
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" required minlength="8" maxlength="64" />
+    <small>Password must include uppercase, lowercase and a number.</small>
+
+    <label for="confirmPassword">Confirm password</label>
+    <input id="confirmPassword" name="confirmPassword" type="password" required minlength="8" maxlength="64" />
+
+    <button type="submit">Register</button>
+  </form>
+</section>
+
+<%- include("partials/footer") %>

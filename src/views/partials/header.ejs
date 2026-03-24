@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <%# Shared metadata and page title per rendered view. %>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title || "AstonCV" %></title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%# Site-wide navigation bar and auth links. %>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/">AstonCV</a>
+      <nav class="nav-links">
+        <a href="/">Browse CVs</a>
+        <%# Show register/login for guests, dashboard/logout for signed-in users. %>
+        <% if (!currentUser) { %>
+          <a href="/register">Register</a>
+          <a href="/login">Login</a>
+        <% } else { %>
+          <a href="/dashboard">My Dashboard</a>
+          <form action="/logout" method="post" class="inline-form">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <button type="submit" class="link-btn">Logout</button>
+          </form>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+  <main class="container">

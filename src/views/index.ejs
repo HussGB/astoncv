@@ -1,0 +1,33 @@
+<%- include("partials/header", { title: "Browse CVs" }) %>
+
+<%# Search/filter controls for the public CV list. %>
+<section class="panel">
+  <h1>Programmer CV Directory</h1>
+  <p class="muted">Search by name or key programming language.</p>
+
+  <form action="/" method="get" class="search-form">
+    <label for="q">Search</label>
+    <input id="q" name="q" value="<%= q || "" %>" maxlength="100" />
+    <button type="submit">Find CVs</button>
+  </form>
+</section>
+
+<%# Render all matching CV summary cards. %>
+<section class="panel">
+  <h2>All CVs</h2>
+  <% if (!cvs.length) { %>
+    <p>No CVs found yet.</p>
+  <% } %>
+
+  <ul class="cv-list">
+    <% cvs.forEach(cv => { %>
+      <li class="cv-item">
+        <h3><a href="/cvs/<%= cv.id %>"><%= cv.name %></a></h3>
+        <p><strong>Email:</strong> <%= cv.email %></p>
+        <p><strong>Key language:</strong> <%= cv.keyprogramming || "Not set" %></p>
+      </li>
+    <% }) %>
+  </ul>
+</section>
+
+<%- include("partials/footer") %>

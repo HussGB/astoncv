@@ -1,0 +1,10 @@
+<%- include("partials/header", { title: title || "Error" }) %>
+
+<%# Generic error display view used by global error handler. %>
+<section class="panel">
+  <h1><%= title || "Error" %></h1>
+  <p><%= message || "An unexpected error occurred." %></p>
+  <p><a href="/">Return home</a></p>
+</section>
+
+<%- include("partials/footer") %>
